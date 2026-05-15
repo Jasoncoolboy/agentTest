@@ -1,0 +1,60 @@
+audio:
+  sample_rate: 16000
+  block_size: 480            # 30ms frames at 16kHz
+  device: null               # null = system default mic
+  playback_device: null      # null = system default speaker
+  playback_sample_rate: 22050
+
+wake_word:
+  model_name: "hey_jarvis"
+  threshold: 0.5
+  debounce_seconds: 1.5
+
+vad:
+  model_path: "models/silero/silero_vad.onnx"
+  speech_threshold: 0.5
+  silence_timeout_ms: 700
+  min_speech_duration_ms: 100
+
+stt:
+  model: "distil-small.en"
+  model_path: "models/whisper"
+  compute_type: "int8"
+  beam_size: 1
+  language: "en"
+  vad_filter: true
+  max_audio_duration_s: 30
+
+llm:
+  api_key_env: "DEEPSEEK_API_KEY"
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-chat"
+  temperature: 0.7
+  max_tokens: 512
+  system_prompt: >
+    You are Jarvis, a helpful and concise voice assistant.
+    Keep responses short and conversational — typically 1-3 sentences.
+    You can use tools when needed to answer questions.
+  timeout_seconds: 30
+  max_retries: 1
+
+history:
+  max_tokens: 3000
+  max_turns: 20
+
+tts:
+  engine: "piper"
+  model: "en_US-lessac-medium"
+  model_path: "models/piper"
+  speaker_id: null
+
+barge_in:
+  mode: "gap"                # "gap", "continuous", "disabled"
+  speech_threshold: 0.6
+  trigger_duration_ms: 150
+  gap_check_ms: 300
+
+pipeline:
+  max_concurrent_tts: 2
+  sentence_min_length: 10
+  log_level: "INFO"
