@@ -13,7 +13,7 @@ Build a fully functional AI voice agent from scratch that runs on a resource-con
 | Wake Word | OpenWakeWord | Open-source, free, ~50MB RAM |
 | VAD | Silero VAD | Lightweight, accurate, open-source |
 | STT | faster-whisper (distil-small.en, int8) | ~150MB RAM, 1-3s latency on CPU |
-| LLM | DeepSeek Chat API (streaming) | No local compute, supports tool calling |
+| LLM | Google Gemini API (streaming, OpenAI-compatible) | No local GPU, supports tool calling |
 | TTS | Piper TTS (en_US-lessac-medium) | ~80MB, 50-150ms per sentence on CPU |
 | Audio I/O | sounddevice | Cross-platform, low-level PortAudio binding |
 | Orchestration | asyncio event loop | Non-blocking, concurrent task coordination |
@@ -47,7 +47,7 @@ voice_agent/
 │   │   └── whisper.py            # faster-whisper wrapper
 │   ├── llm/
 │   │   ├── __init__.py
-│   │   ├── client.py             # DeepSeek streaming client + tool call handling
+│   │   ├── client.py             # Gemini streaming client (OpenAI compat) + tool calls
 │   │   ├── tools.py              # Tool registry and schema generation
 │   │   └── history.py            # Conversation history with token budget
 │   ├── tts/
@@ -67,7 +67,7 @@ voice_agent/
 │   ├── download_models.py        # One-shot model downloader
 │   └── test_microphone.py        # Audio device sanity check
 ├── requirements.txt
-├── .env.example                  # DEEPSEEK_API_KEY placeholder
+├── .env.example                  # GEMINI_API_KEY placeholder
 └── .gitignore
 ```
 
@@ -169,7 +169,7 @@ python-dotenv>=1.0
 7. `src/stt/whisper.py` — speech-to-text
 8. `src/utils/sentence_buffer.py` — sentence boundary detection
 9. `src/llm/history.py` — conversation history management
-10. `src/llm/client.py` — DeepSeek streaming client
+10. `src/llm/client.py` — Gemini streaming client
 11. `src/llm/tools.py` + `tools/` — tool calling framework + examples
 12. `src/tts/piper.py` — text-to-speech synthesis
 13. `src/orchestrator.py` — state machine tying everything together

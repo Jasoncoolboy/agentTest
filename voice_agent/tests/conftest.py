@@ -34,9 +34,9 @@ def mock_config():
             "vad_filter": True,
         },
         "llm": {
-            "api_key_env": "DEEPSEEK_API_KEY",
-            "base_url": "https://api.deepseek.com",
-            "model": "deepseek-chat",
+            "api_key_env": "GEMINI_API_KEY",
+            "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+            "model": "gemini-2.5-flash",
             "temperature": 0.7,
             "max_tokens": 512,
             "timeout_seconds": 30,

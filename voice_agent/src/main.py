@@ -6,7 +6,7 @@ Usage:
     python -m src.main
     
 Environment:
-    DEEPSEEK_API_KEY: Your DeepSeek API key (required)
+    GEMINI_API_KEY: Google Gemini API key (required; get one at AI Studio)
 """
 
 import asyncio
@@ -57,7 +57,7 @@ def check_prerequisites(config: dict) -> bool:
     if not os.getenv(api_key_env):
         errors.append(
             f"Environment variable '{api_key_env}' not set.\n"
-            f"  Copy .env.example to .env and add your DeepSeek API key."
+            f"  Copy .env.example to .env and add your Gemini API key."
         )
 
     # Check model files

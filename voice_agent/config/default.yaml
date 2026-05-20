@@ -26,16 +26,16 @@ stt:
   max_audio_duration_s: 30
 
 llm:
-  api_key_env: "DEEPSEEK_API_KEY"
-  base_url: "https://api.deepseek.com"
-  model: "deepseek-chat"
+  api_key_env: "GEMINI_API_KEY"
+  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+  model: "gemini-2.5-flash"
   temperature: 0.7
   max_tokens: 512
   system_prompt: >
     You are Jarvis, a helpful and concise voice assistant.
     Keep responses short and conversational — typically 1-3 sentences.
     You can use tools when needed to answer questions.
-  timeout_seconds: 30
+  timeout_seconds: 60
   max_retries: 1
 
 history:
